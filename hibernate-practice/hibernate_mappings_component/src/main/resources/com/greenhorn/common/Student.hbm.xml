@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.greenhorn.model.Student" table="STUDENT" catalog="hibernate_practice">
+  <id name="id" type="java.lang.Integer">
+            <column name="STUDENT_ID" />
+            <generator class="identity" />
+  </id> 
+  <property name="title" type="string">
+            <column name="STUDENT_TITLE" length="10" not-null="true"/>
+   </property>
+   <property name="firstName" type="string">
+            <column name="STUDENT_FNAME" length="20" not-null="true"/>
+   </property>
+    <property name="lastName" type="string">
+            <column name="STUDENT_LNAME" length="20"/>
+   </property>
+   <component name="presentAdd" class ="com.greenhorn.model.Address">
+	   <property name="street" type="string" length="20">
+	   <column name="ADD_STREET"></column>
+	   </property>
+	   <property name="city" type="string" length="20">
+	   <column name="ADD_CITY"></column>
+	   </property>
+	   <property name="state" type="string">
+	   <column name="ADD_STATE"></column>
+	   </property>
+	   <property name="zipcode" type="string">
+	   <column name="ADD_ZIPCODE"></column>
+	   </property>
+   </component>
+    <component name="permAdd" class ="com.greenhorn.model.Address">
+	   <property name="street" type="string" length="20">
+	   <column name="ADD_PERM_STREET"></column>
+	   </property>
+	   <property name="city" type="string" length="20">
+	   <column name="ADD_PERM_CITY"></column>
+	   </property>
+	   <property name="state" type="string">
+	   <column name="ADD_PERM_STATE"></column>
+	   </property>
+	   <property name="zipcode" type="string">
+	   <column name="ADD_PER_ZIPCODE"></column>
+	   </property>
+   </component>
+
+</class>
+</hibernate-mapping>
