@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.greenhorn.model.Student" table="STUDENT" discriminator-value="student" catalog="hibernate_practice">
+  <id name="id" type="java.lang.Integer">
+            <column name="STUDENT_ID" />
+            <generator class="increment" />
+  </id> 
+  <discriminator column="STUDENT_TYPE" type="string"></discriminator>
+  <property name="title" type="string">
+            <column name="STUDENT_TITLE" length="10"/>
+   </property>
+   <property name="firstName" type="string">
+            <column name="STUDENT_FNAME" length="20"/>
+   </property>
+    <property name="lastName" type="string">
+            <column name="STUDENT_LNAME" length="20"/>
+   </property>
+   
+   <subclass name="com.greenhorn.model.StudentPartTime" discriminator-value="parttime">
+   	<property name="hoursPerWeek" column="S_HR_PERWEEK"></property>
+   	<property name="course" column="STUDENT_COURSE"></property>
+   </subclass>
+   
+   <subclass name="com.greenhorn.model.StudentFullTime" discriminator-value="fulltime">
+   	<property name="duration" column="S_C_DURATION"></property>
+    <property name="course" column="STUDENT_COURSE"></property>
+   </subclass>
+
+</class>
+</hibernate-mapping>

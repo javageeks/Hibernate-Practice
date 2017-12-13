@@ -8,5 +8,6 @@
             <column name="STUDENT_ID" />
             <generator class="increment" />
   </id> 
-  </class>
+  
+</class>
 </hibernate-mapping>
