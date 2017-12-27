@@ -8,5 +8,35 @@
             <column name="STUDENT_ID" />
             <generator class="increment" />
   </id> 
+  <discriminator column="STUDENT_TYPE"></discriminator>
+  <property name="title" type="string">
+  	<column name="S_TITLE" length="6"></column>
+  </property>
+  
+  <property name="firstName" type="string">
+  	<column name="S_FIRSTNAME" length="20"></column>
+  </property>
+  
+  <property name="lastName" type="string">
+  	<column name="S_LASTNAME" length="20" not-null="false"></column>
+  </property>
+  
+  <subclass name="com.greenhorn.model.StudentFullTime" discriminator-value="FULLTIME">
+  <property name="duration" type="int">
+  	<column name="COURSE_DURATION" ></column>
+  </property>
+  <property name="course" type="string">
+  	<column name="S_COURSE" length="20"></column>
+  </property>
+  </subclass>
+  
+  <subclass name="com.greenhorn.model.StudentPartTime" discriminator-value="PARTTIME">
+  <property name="hoursPerWeek" type="int">
+  <column name="course_hourse"></column>
+  </property>
+  <property name="course" type="string">
+  <column name="S_COURSE"></column>
+  </property>
+  </subclass>
   </class>
 </hibernate-mapping>

@@ -17,6 +17,8 @@
     <property name="lastName" type="string">
             <column name="STUDENT_LNAME" length="20"/>
    </property>
+   
+   
    <component name="presentAdd" class ="com.greenhorn.model.Address">
 	   <property name="street" type="string" length="20">
 	   <column name="ADD_STREET"></column>

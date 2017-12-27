@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.greenhorn.model.Student" table="STUDENT" discriminator-value="student" catalog="hibernate_practice">
+  <id name="sno" type="java.lang.Integer">
+            <column name="STUDENT_ID" />
+            <generator class="native" />
+  </id>
+  <one-to-one name="studentDetails" class="com.greenhorn.model.StudentPersonalDetails" cascade="all"></one-to-one>
+  </class>
+</hibernate-mapping>

@@ -3,12 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-<class name="com.greenhorn.model.Student" table="STUDENT" discriminator-value="student" catalog="hibernate_practice">
+<class name="com.greenhorn.model.Student" table="STUDENT"  catalog="hibernate_practice">
   <id name="id" type="java.lang.Integer">
             <column name="STUDENT_ID" />
             <generator class="increment" />
   </id> 
-  <discriminator column="STUDENT_TYPE" type="string"></discriminator>
+ 
   <property name="title" type="string">
             <column name="STUDENT_TITLE" length="10"/>
    </property>
@@ -18,16 +18,28 @@
     <property name="lastName" type="string">
             <column name="STUDENT_LNAME" length="20"/>
    </property>
-   
-   <subclass name="com.greenhorn.model.StudentPartTime" discriminator-value="parttime">
-   	<property name="hoursPerWeek" column="S_HR_PERWEEK"></property>
-   	<property name="course" column="STUDENT_COURSE"></property>
-   </subclass>
-   
-   <subclass name="com.greenhorn.model.StudentFullTime" discriminator-value="fulltime">
-   	<property name="duration" column="S_C_DURATION"></property>
-    <property name="course" column="STUDENT_COURSE"></property>
-   </subclass>
 
+	<joined-subclass name="com.greenhorn.model.StudentFullTime"
+		table="STUDENT_FULLTIME">
+		<key column="id"></key>
+		<property name="duration" type="int">
+			<column name="COURSE_DURATION"></column>
+		</property>
+		<property name="course" type="string">
+			<column name="S_COURSE" length="20"></column>
+		</property>
+	</joined-subclass>
+
+	<joined-subclass name="com.greenhorn.model.StudentPartTime"
+		table="STUDENT_PARTTIME">
+		<key column="id"></key>
+		<property name="hoursPerWeek" type="int">
+			<column name="course_hourse"></column>
+		</property>
+		<property name="course" type="string">
+			<column name="S_COURSE"></column>
+		</property>
+	</joined-subclass>
+  
 </class>
 </hibernate-mapping>

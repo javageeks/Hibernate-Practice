@@ -3,5 +3,22 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-
+<class name="com.greenhorn.model.Student"  table="STUDENT">
+	<id name="id" type="int">
+	<column name="STUDENT_ID"></column>
+	<generator class="increment"></generator>
+	</id>
+	<property name="title" type="string">
+		<column name="S_TITLE"></column>
+	</property>
+		<property name="firstName" type="string">
+		<column name="S_FIRSTNAME"></column>
+	</property>
+		<property name="lastName"  type="string">
+		<column name="S_LASTNAME"></column>
+	</property>
+		<property name="course" type="string">
+		<column name="S_COURSE"></column>
+	</property>
+</class>	
 </hibernate-mapping>

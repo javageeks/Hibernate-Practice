@@ -17,10 +17,15 @@ public class App
     	 System.out.println("Maven + Hibernate + MySQL");
     	 
          Student student = new Student();  // student instantiation state .....
+         
          Address presentAdd = new Address();
+         
          Address permAdd = new Address();
+         
          Session session = HibernateUtil.getSessionFactory().openSession();
+         
          session.beginTransaction();
+         
          presentAdd.setStreet("ABC");
          presentAdd.setCity("HYD");
          presentAdd.setState("TS");
@@ -29,15 +34,21 @@ public class App
          permAdd.setStreet("XYZ");
          permAdd.setCity("BANGALORE");
          permAdd.setState("KA");
-         permAdd.setZipcode("5463667");
+         permAdd.setZipcode("567");
          
          student.setFirstName("Harish"); // persistent identity -- primary key and java identity 
          student.setLastName("V");
          student.setTitle("Mr");
          student.setPresentAdd(presentAdd);
          student.setPermAdd(permAdd);
+         
          session.save(student);
+         
+         
+         System.out.println(student);
+         
          session.getTransaction().commit();
+         
          session.close();
         
          

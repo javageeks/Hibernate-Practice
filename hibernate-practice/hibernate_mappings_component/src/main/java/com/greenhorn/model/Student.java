@@ -14,7 +14,6 @@ public class Student implements Serializable{
 	private String lastName;
 	private Address presentAdd;
 	private Address permAdd;
-	
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
@@ -42,11 +41,6 @@ public class Student implements Serializable{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", title=" + title + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", presentAdd=" + presentAdd + ", permAdd=" + permAdd + "]";
-	}
 	public Address getPresentAdd() {
 		return presentAdd;
 	}
@@ -59,6 +53,12 @@ public class Student implements Serializable{
 	public void setPermAdd(Address permAdd) {
 		this.permAdd = permAdd;
 	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", title=" + title + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", presentAdd=" + presentAdd + ", permAdd=" + permAdd + "]";
+	}
+	
 	
 
 }

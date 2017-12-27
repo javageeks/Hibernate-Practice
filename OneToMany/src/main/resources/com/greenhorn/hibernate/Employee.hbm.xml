@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.greenhorn.hibernate.model">
+
+	<class name="Employee" table="EMPLOYEE">
+		<id name="employeeId" column="EMPLOYEE_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="firstname" column ="firstname"/>
+		<property name="lastname" column="lastname" />
+		<property name="birthDate" type="date" column="birth_date" />
+		<property name="cellphone" column="cell_phone" />
+
+
+  		<many-to-one name="department" class="com.greenhorn.hibernate.model.Department" fetch="select">
+            <column name="department_id" not-null="true" />
+        </many-to-one>
+			<!-- The fetch attribute tells hibernate how to get the children -->
+	</class>
+</hibernate-mapping>
